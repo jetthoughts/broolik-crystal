@@ -1,0 +1,9 @@
+name: broolik-crystal
+version: 0.1.0
+
+authors:
+  - Paul Keen <pftg@users.noreply.github.com>
+
+crystal: 0.28.0
+
+license: MIT
