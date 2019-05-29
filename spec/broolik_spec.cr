@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-describe Broolik::Crystal do
+describe Broolik do
   # TODO: Write tests
 
   it "works" do

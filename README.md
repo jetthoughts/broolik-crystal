@@ -8,8 +8,8 @@ TODO: Write a description here
 
    ```yaml
    dependencies:
-     broolik-crystal:
-       github: your-github-user/broolik-crystal
+     broolik:
+       github: jetthoughts/broolik-crystal
    ```
 
 2. Run `shards install`
@@ -17,7 +17,7 @@ TODO: Write a description here
 ## Usage
 
 ```crystal
-require "broolik-crystal"
+require "broolik"
 ```
 
 TODO: Write usage instructions here
