@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/jetthoughts/broolik-crystal/tree/master.svg?style=svg)](https://circleci.com/gh/jetthoughts/broolik-crystal/tree/master)
+
 # Broolik: Affiliate Links Checker for Crystal
 
 TODO: Write a description here
