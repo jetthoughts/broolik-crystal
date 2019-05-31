@@ -7,15 +7,15 @@ module Broolik
     end
 
     JSON.mapping(
-      id: { type: String },
+      id: {type: String},
       status: ValidationStatus,
       device: String,
       url: String,
-      last_url: { type: String, nilable: true },
-      country: { type: String, nilable: true },
-      response_code: { type: UInt16, nilable: true },
-      updated_at: { type: Time, converter: Time::Format.new("%FT%X.%3NZ"), nilable: true },
-      redirects: { type: Array(Redirection), nilable: true }
+      last_url: {type: String, nilable: true},
+      country: {type: String, nilable: true},
+      response_code: {type: UInt16, nilable: true},
+      updated_at: {type: Time, converter: Time::Format.new("%FT%X.%3NZ"), nilable: true},
+      redirects: {type: Array(Redirection), nilable: true}
     )
 
     def in_progress?
@@ -29,7 +29,7 @@ module Broolik
     struct Redirection
       JSON.mapping(
         url: String,
-        status_code: { type: UInt16, nilable: true }
+        status_code: {type: UInt16, nilable: true}
       )
     end
   end
