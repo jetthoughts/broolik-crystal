@@ -36,8 +36,6 @@ link.redirects.each do |redirect|
 end
 ```
 
-TODO: Write usage instructions here
-
 ## Development
 
 TODO: Write development instructions here
