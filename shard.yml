@@ -1,6 +1,11 @@
 name: broolik
 version: 0.1.0
 
+development_dependencies:
+  webmock:
+    github: manastech/webmock.cr
+    branch: master
+
 authors:
   - Paul Keen <pftg@users.noreply.github.com>
 

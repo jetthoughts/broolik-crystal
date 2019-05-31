@@ -1,0 +1,6 @@
+version: 1.0
+shards:
+  webmock:
+    github: manastech/webmock.cr
+    commit: e6a5fa4ca973c6ee715936b6dd83ed52f7762f6f
+

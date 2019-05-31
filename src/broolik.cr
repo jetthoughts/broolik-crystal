@@ -1,6 +1,9 @@
-# TODO: Write documentation for `Broolik::Crystal`
+require "./broolik/*"
+
 module Broolik
   VERSION = "0.1.0"
 
-  # TODO: Put your code here
+  def self.client(endpoint = "https://broolik.tk") : Client
+    Client.new(endpoint)
+  end
 end
