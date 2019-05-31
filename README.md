@@ -20,6 +20,20 @@ TODO: Write a description here
 
 ```crystal
 require "broolik"
+
+client = Broolik.client
+
+link = client.create_link({
+  "url" => "http://jetthoughts.com",
+  "device" => "iphone",
+  "country" => "UKR"
+})
+
+puts "Link validation status is: #{link.status}"
+
+link.redirects.each do |redirect|
+  puts "Following '#{redirect.url}' got '#{redirect.status_code}'
+end
 ```
 
 TODO: Write usage instructions here
