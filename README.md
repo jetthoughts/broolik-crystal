@@ -1,4 +1,5 @@
 [![CircleCI](https://circleci.com/gh/jetthoughts/broolik-crystal/tree/master.svg?style=svg)](https://circleci.com/gh/jetthoughts/broolik-crystal/tree/master)
+[![Travis CI](https://travis-ci.org/jetthoughts/broolik-crystal.svg?branch=master)](https://travis-ci.org/jetthoughts/broolik-crystal)
 
 # Broolik: Affiliate Links Checker for Crystal
 
