@@ -1,20 +1,5 @@
 uuid,url,country,device,store_application_id,comment
-666,http://apple.co/2i1neov,,android,,'empty country'
-666,http://apple.co/2i1neov,KEK,android,,'wrong country'
-666,https://t.co/z5x88zHTpw,USA,ihpnoe,1231,"wrong device"
-
-500,http://mtrackqwe.com/mt/w2a4x2c4d4s2230344v2s224p2/&subid1=c69ec8e35479440e9de0ad3a7e54406c&device_id=e36df49a-89cf-4381-9e87-7f21dab218e8&placement=24368&subid3=45678600,BRA,android,com.alibaba.aliexpresshd,"BROKEN: google you are not bot page"
-3,https://goo.gl/cWjvtr,USA,iphone,310633900,"success link to iphone store, but wrong application id"
-2,http://bit.ly/2iOJOVo,USA,iphone,,'error. unexisting domain name ekekke.com'
-2,https://goo.gl/mRkzNX,USA,iphone,,'404 not found'
-2,http://apple.co/2i1neov,USA,android,,'redirect to wrong store'
-2,https://goo.gl/8N7f4R,USA,android,com.raiyumi.dogbird,'redirect to wrong page'
-2,https://t.co/z5x88zHTpw,USA,iphone,1231,"Javascript redirects: non app store"
-10,https://global.ymtracking.com/trace?app_id=135&aff_sub=gsek2wrb-37mk-p6nu-c3od-hg2sosjhl6ks&offer_id=9170595&type=ff19e16900000022&idfa=0KPLL6FW-WSZ1-6F1F-1W5U-QNQZRRPKO9s6&google_adv_id=&aff_sub7=0KPLL6FW-WSZ1-6F1F-1W5U-QNQZRRPKO9s6&aff_sub8=41164041,USA,iphone,723134859,'success: meta tag redirect and current page should be itunes'
-1,https://goo.gl/cWjvtr,USA,iphone,310633997,"success link to iphone store"
-1,http://apple.co/2i1neov,USA,iphone,,'success link to iphone store'
-1,https://goo.gl/8N7f4R,USA,android,com.raiyumi.catbird,'success link to android store'
-1,https://goo.gl/ZD8NB3,KOR,android,com.nexon.axe,'success link to android store'
-1,https://goo.gl/nQq6L4,KOR,iphone,id1129123018,'success link to iphone store'
-1,https://trk-optimize.com/trkclk/?pid=4012&cid=2834038&nofw&custom1=8NN99MVEDVTVJYSF&aff_sub_id=47746&gaid=&custom3=,USA,iphone,545599256,"success: js redirect example"
-1,http://c.traktum.com/?a=66904&s4=gsek2wrb-37mk-p6nu-c3od-hg2sosjhl65i&c=689305&E=xHkx44pblvs=&s5=0KPLL6FW-WSZ1-6F1F-1W5U-QNQZRRPKO9rc&s1=12462&s2=4016004,DEU,iphone,794201100,"success: meta tag redirect example"
+666,http://jetthoughts.com,UKR,android,,'valid country & device'
+666,http://jetthoughts.com,,android,,'empty country'
+666,http://jetthoughts.com,KEK,android,,'wrong country'
+666,http://jetthoughts.com,USA,ihpnoe,1231,"wrong device"

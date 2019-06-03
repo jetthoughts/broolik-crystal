@@ -19,8 +19,8 @@ module Broolik
       response = HTTP::Client.post(links_url, form: link_attrs)
 
       handle_response(response) do |res|
-				Link.from_json(res)
-			end
+        Link.from_json(res)
+      end
     end
 
     def find_link(id)
@@ -29,61 +29,62 @@ module Broolik
       response = HTTP::Client.get(link_url)
 
       handle_response(response) do |res|
-				Link.from_json(res)
-			end
+        Link.from_json(res)
+      end
     end
 
     def create_batch(batch_attrs)
       batches_url = @base_url.to_s + "/api/v1/batches.json"
 
-			IO.pipe do |reader, writer|
-				channel = Channel(String).new(1)
+      response = upload_links_as_csv(batches_url, batch_attrs)
 
-				spawn do
-					HTTP::FormData.build(writer) do |formdata|
-						channel.send(formdata.content_type)
+      handle_response response do
+        Broolik::Batch.from_json(response.body)
+      end
+    end
 
-						formdata.field("name", "foo")
-						if batch_attrs["file"]
-							File.open(batch_attrs["file"]) do |file|
-								metadata = HTTP::FormData::FileMetadata.new(filename: "foo.png")
-								headers = HTTP::Headers{"Content-Type" => "image/png"}
-								formdata.file("file", file, metadata, headers)
-							end
-						end
-					end
+    def find_batch(id)
+      batch_url = @base_url.to_s + "/api/v1/batches/#{id}.json"
 
-					writer.close
-				end
+      response = HTTP::Client.get(batch_url)
 
-				headers = HTTP::Headers{"Content-Type" => channel.receive}
-				response = HTTP::Client.post(batches_url, body: reader, headers: headers)
+      handle_response response do
+        Broolik::Batch.from_json(response.body)
+      end
+    end
 
-				# response = HTTP::Client.post(batches_url, params: batch_upload_params)
+    private def handle_response(response, &block)
+      case response.status_code
+      when (200...300)
+        yield response.body
+      else
+        raise Error.new(response.to_s)
+      end
+    end
 
-				handle_response response do
-					Broolik::Batch.from_json(response.body)
-				end
-			end
-		end
+    private def upload_links_as_csv(batches_url : String, batch_attrs : Hash(String, String))
+      IO.pipe do |reader, writer|
+        channel = Channel(String).new(1)
 
-		def find_batch(id)
-			batch_url = @base_url.to_s + "/api/v1/batches/#{id}.json"
+        spawn do
+          HTTP::FormData.build(writer) do |formdata|
+            channel.send(formdata.content_type)
 
-			response = HTTP::Client.get(batch_url)
+            if batch_attrs["file"]?
+              File.open(batch_attrs["file"]) do |file|
+                metadata = HTTP::FormData::FileMetadata.new(filename: File.basename(file.path))
+                headers = HTTP::Headers{"Content-Type" => "text/csv"}
+                formdata.file("batch[file]", file, metadata, headers)
+              end
+            end
+          end
 
-				handle_response response do
-					Broolik::Batch.from_json(response.body)
-				end
-		end
+          writer.close
+        end
 
-		private def handle_response(response, &block)
-			case response.status_code
-			when (200...300)
-				yield response.body
-			else
-				raise Error.new(response.to_s)
-			end
-		end
-	end
+        headers = HTTP::Headers{"Content-Type" => channel.receive}
+        HTTP::Client.post(batches_url, body: reader, headers: headers)
+      end
+    end
+  end
 end

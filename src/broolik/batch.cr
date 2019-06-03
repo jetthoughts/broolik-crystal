@@ -19,7 +19,7 @@ module Broolik
       status == State::Created
     end
 
-    def report_complete?
+    def report_completed?
       status == State::ReportComplete
     end
 

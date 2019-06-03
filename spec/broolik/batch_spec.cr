@@ -27,7 +27,7 @@ describe Broolik::Batch do
         }
         LINK_RAW_RESPONSE
 
-        batch.report_complete?.should be_true
+        batch.report_completed?.should be_true
         batch.links_report.should eq URI.parse("https://example.com/test.csv").to_s
       end
     end
