@@ -4,3 +4,5 @@ language: crystal
 script:
  - crystal spec
  - crystal tool format --check
+ - crystal run examples/single_link_verification.cr
+ - crystal run examples/batch_links_verification.cr
