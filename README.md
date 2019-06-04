@@ -19,6 +19,8 @@ TODO: Write a description here
 
 ## Usage
 
+1. Single link real-time verification:
+
 ```crystal
 require "broolik"
 
@@ -35,6 +37,50 @@ puts "Link validation status is: #{link.status}"
 link.redirects.each do |redirect|
   puts "Following '#{redirect.url}' got '#{redirect.status_code}'
 end
+
+client.close
+```
+
+2. Schedule bulk verification:
+
+```crystal
+require "broolik"
+
+client = Broolik.client
+
+batch = client.create_batch(
+  {
+    "url" => "http://jetthoughts.com",
+    "device" => "iphone",
+    "country" => "UKR"
+  },
+  {
+    "url" => "http://jtway.co",
+    "device" => "android",
+    "country" => "USA"
+  }
+)
+
+puts "Batch validation state is: #{batch.status}"
+
+until batch.report_completed?
+  sleep 5 * 60 # 5 minutes
+
+  # Poll batch result each 5 minutes
+  batch = client.find_batch(batch.id)
+  puts "Batch validation state is: #{batch.status}"
+end
+
+# Show batch report content
+unless batch.links_report.nil?
+  puts "Verification report:"
+  HTTP::Client.get(batch.links_report.as(String)) do |response|
+    puts response.body_io.gets_to_end
+  end
+  puts "=" * 10
+end
+
+client.close
 ```
 
 ## Development
