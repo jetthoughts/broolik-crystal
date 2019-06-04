@@ -1,6 +1,6 @@
 require "../src/broolik"
 
-client = Broolik.client("http://lvh.me:3000")
+client = Broolik.client("https://broolik.tk")
 
 link = client.create_link({
   "url"     => "http://jetthoughts.com",
@@ -8,5 +8,6 @@ link = client.create_link({
   "country" => "UKR",
 })
 
-puts "Link validation status is: #{link.status}"
+puts "Link validation status for http://jetthoughts.com is: #{link.status}"
 
+client.close
