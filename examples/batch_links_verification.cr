@@ -34,7 +34,7 @@ puts "Batch is #{batch.status}"
 watch_for_report(client, batch)
 
 puts "Schedule bulk links verifications with file"
-batch = client.create_batch_with_file("spec/fixtures/urls_example.csv")
+batch = client.create_batch_with_file("examples/urls_example.csv")
 puts "Batch is #{batch.status}"
 
 watch_for_report(client, batch)
