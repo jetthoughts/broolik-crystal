@@ -1,6 +1,6 @@
 require "../src/broolik"
 
-client = Broolik.client("https://broolik.tk")
+client = Broolik.client
 
 link = client.create_link({
   # "country" => "UKR",
