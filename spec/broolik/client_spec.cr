@@ -6,7 +6,7 @@ describe Broolik::Client do
       it "an exception should be raised" do
         expect_raises(Broolik::Error) do
           WebMock.wrap do
-            WebMock.stub(:any, "https://broolik.tk/api/v1/links.json")
+            WebMock.stub(:any, "https://broolik.ml/api/v1/links.json")
               .to_return(status: 404)
 
             Broolik.client.create_link
@@ -16,7 +16,7 @@ describe Broolik::Client do
     end
 
     it "creates remote link and return details" do
-      WebMock.stub(:post, "https://broolik.tk/api/v1/links.json")
+      WebMock.stub(:post, "https://broolik.ml/api/v1/links.json")
         .to_return(status: 201, body: <<-LINK_RAW_RESPONSE)
           {
             "id": "uniq-uuid-as-string",
@@ -45,7 +45,7 @@ describe Broolik::Client do
 
   describe "#find_link" do
     it "returns links validation details" do
-      WebMock.stub(:get, "https://broolik.tk/api/v1/links/uniq-uuid-as-string.json")
+      WebMock.stub(:get, "https://broolik.ml/api/v1/links/uniq-uuid-as-string.json")
         .to_return(status: 201, body: <<-LINK_RAW_RESPONSE)
           {
             "id": "uniq-uuid-as-string",
@@ -74,7 +74,7 @@ describe Broolik::Client do
 
   describe "#create_batch" do
     it "creates remote link and return details" do
-      WebMock.stub(:post, "https://broolik.tk/api/v1/batches.json")
+      WebMock.stub(:post, "https://broolik.ml/api/v1/batches.json")
         .to_return(status: 201, body: <<-LINK_RAW_RESPONSE)
 					{
 						"id": "8e0eed26-20fb-4370-a177-11ecf3c136d6",
@@ -91,7 +91,7 @@ describe Broolik::Client do
 
   describe "#find_batch" do
     it "creates remote link and return details" do
-      WebMock.stub(:get, "https://broolik.tk/api/v1/batches/batch-uuid.json")
+      WebMock.stub(:get, "https://broolik.ml/api/v1/batches/batch-uuid.json")
         .to_return(status: 201, body: <<-LINK_RAW_RESPONSE)
 					{
 						"id": "8e0eed26-20fb-4370-a177-11ecf3c136d6",
