@@ -22,7 +22,7 @@ def watch_for_report(client, batch)
   end
 end
 
-client = Broolik.client("https://broolik.tk")
+client = Broolik.client("https://broolik.ml")
 
 puts "Schedule bulk links verifications"
 batch = client.create_batch(
